@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label for="ticker">Ticker Symbol:</label>
+    <input type="text" name="ticker" id="ticker" required>
+
+    <label for="start_date">Start Date (YYYY-MM-DD):</label>
+    <input type="date" name="start_date" id="start_date" required>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

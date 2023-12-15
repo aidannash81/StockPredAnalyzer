@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Predictor</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          color: #333;
+          text-align: center;
+          padding: 50px;
+      }
+
+      .main-container {
+          display: flex;
+          justify-content: space-between;
+      }
+
+      .stock-list {
+          width: 40%;
+          background: #fff;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin-right: 20px;
+      }
+
+      .stock-list ul {
+          list-style-type: none;
+          padding: 0;
+      }
+
+      .stock-list ul li {
+          cursor: pointer;
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+      }
+
+      .stock-list ul li:hover {
+          background-color: #eee;
+      }
+
+      .form-container {
+          width: 50%;
+          background: #fff;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo-holder {
+      background: #f2f2f2;
+      width: 180px;
+      height: 220px;
+      position: relative;
+      margin: 0 auto ;
+      padding-top: 12px;
+      padding-bottom: 24px;
+      -webkit-transform: translateZ(0);
+    }
+
+  .bg {
+
+    position: absolute;
+    top: 9px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    background: url(http://boutique.flarework.com/wp-content/themes/boutique/img/logo_large.png) center 0px no-repeat ;
+      background-size: contain;
+      -webkit-filter: drop-shadow(0px 6px 25px rgba(0,0,0,0.5));
+  }
+
+  .bar {
+      position: relative;
+      height: 8px;
+      background: #6a6a6a;
+      width:  0%;
+      top: 0px;
+      left: 18px;
+      margin-top: 8px;
+      box-shadow: 0 0 3px rgba(192,192,192,0.9);
+      animation: fill 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+  .bar.fill1 {
+    animation: fill-1 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+  .bar.fill2 {
+     animation:  fill-2 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+
+  .bar.fill3 {
+     animation:  fill-3 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+
+  .bar.fill4 {
+     animation:  fill-4 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+  .bar.fill5 {
+     animation:  fill-5 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+  .bar.fill6 {
+     animation:  fill-6 5s infinite alternate, colors 5s infinite alternate;
+  }
+
+
+
+  @keyframes fill {
+    0%   { width: 0; }
+    33%  { width: 30px;}
+    66%  { width: 10px;}
+    100% { width: 105px; }
+  }
+
+  @keyframes fill-1 {
+    0%   { width: 0; }
+    33%  { width: 50px;}
+    66%  { width: 20px;}
+    100% { width: 130px; }
+  }
+
+  @keyframes fill-2 {
+    0%   { width: 0; }
+    33%  { width: 90px;}
+    66%  { width: 70px;}
+    100% { width: 136px; }
+  }
+
+  @keyframes fill-3 {
+    0%   { width: 0; }
+    33%  { width: 50px;}
+    66%  { width: 24px;}
+    100% { width: 109px; }
+  }
+
+  @keyframes fill-4 {
+    0%   { width: 0; }
+    33%  { width: 98px;}
+    66%  { width: 34px;}
+    100% { width: 99px; }
+  }
+
+  @keyframes fill-5 {
+    0%   { width: 0; }
+    33%  { width: 30px;}
+    66%  { width: 10px;}
+    100% { width: 148px; }
+  }
+
+
+  @keyframes fill-6 {
+    0%   { width: 0; }
+    33%  { width: 48px;}
+    66%  { width: 22px;}
+    100% { width: 140px; }
+  }
+
+  @keyframes colors {
+    0% { background-color: #5a5a5a;}
+    50% { background-color: #3a3;}
+    100% { background-color: #6a6a6a;}
+  }
+
+    canvas {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        margin-left: -100vmin;
+        width: 50vmin;
+        height: 50vmin;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">Gourmet au Catering</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<h1>Welcome to Stock Predictor</h1>
+
+<div class="logo-holder">
+  <div class="bg"></div>
+  <div class="bar"></div>
+  <div class="bar fill1"></div>
+  <div class="bar fill2"></div>
+  <div class="bar fill3"></div>
+  <div class="bar fill4"></div>
+  <div class="bar fill1"></div>
+  <div class="bar fill5"></div>
+  <div class="bar fill6"></div>
+  <div class="bar"></div>
+</div>
+
+
+
+<div class="main-container">
+    <div class="stock-list">
+        <h2>Top Stocks</h2>
+        <ul>
+            <li onclick="selectStock('AAPL')">Apple (AAPL)</li>
+            <li onclick="selectStock('GOOGL')">Google (GOOGL)</li>
+            <li onclick="selectStock('MSFT')">Microsoft (MSFT)</li>
+            <!-- Add more stocks here -->
+        </ul>
+    </div>
+
+    <div class="form-container">
+        <p>Select a stock ticker and start date:</p>
+
+        <form method="post">
+    {% csrf_token %}
+    <label for="ticker">Ticker Symbol:</label>
+    <select name="ticker" id="ticker-select" required>
+        <option value="">Select Ticker</option>
+        <option value="AAPL">Apple (AAPL)</option>
+        <option value="GOOGL">Google (GOOGL)</option>
+        <option value="MSFT">Microsoft (MSFT)</option>
+        <!-- Add more ticker options here -->
+    </select>
+
+    <div class="slider-container">
+        <label for="time-frame-slider">Time Frame: <span id="slider-label">Short Term</span></label>
+        <input type="range" min="0" max="1" value="0" class="slider" id="time-frame-slider" onchange="updateSliderLabel()">
+    </div>
+
+    <button type="submit">Predict</button>
+</form>
+    </div>
+</div>
+
+<script>
+    function selectStock(stock) {
+        document.getElementById('ticker-select').value = stock;
+    }
+
+    const MAX = 50;
+
+        var canvas, ctx;
+        var count = 0;
+        var points = [];
+
+        window.onload = function () {
+            canvas = document.getElementsByTagName("canvas")[0];
+            ctx = canvas.getContext("2d");
+            canvas.width = canvas.height = 200;
+            ctx.fillRect(0, 0, 200, 200);
+
+            var r = 0;
+            for (var a = 0; a < MAX; a++) {
+                points.push([Math.cos(r), Math.sin(r), 0]);
+                r += (Math.PI * 2) / MAX;
+            }
+
+            for (var a = 0; a < MAX; a++) {
+                points.push([0, points[a][0], points[a][1]]);
+            }
+
+            for (var a = 0; a < MAX; a++) {
+                points.push([points[a][1], 0, points[a][0]]);
+            }
+
+            rus();
+        };
+
+        function rus() {
+            ctx.globalCompositeOperation = "source-over";
+            ctx.fillStyle = "rgba(0,0,0,0.03)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = "lighter";
+
+            var tim = count / 5;
+
+            for (var e = 0; e < 3; e++) {
+                tim *= 1.7;
+                var s = 1 - e / 3;
+                a = tim / 59;
+                var yp = Math.cos(a);
+                var yp2 = Math.sin(a);
+                a = tim / 23;
+                var xp = Math.cos(a);
+                var xp2 = Math.sin(a);
+                var p2 = [];
+
+                for (var a = 0; a < points.length; a++) {
+                    var x = points[a][0];
+                    var y = points[a][1];
+                    var z = points[a][2];
+
+                    var y1 = y * yp + z * yp2;
+                    var z1 = y * yp2 - z * yp;
+                    var x1 = x * xp + z1 * xp2;
+
+                    z = x * xp2 - z1 * xp;
+                    z1 = Math.pow(2, z * s);
+                    x = x1 * z1;
+                    y = y1 * z1;
+                    p2.push([x, y, z]);
+                }
+
+                s *= 60;
+                var canvasCenter = canvas.width / 2;
+                for (var d = 0; d < 3; d++) {
+                    for (var a = 0; a < MAX; a++) {
+                        const b = p2[d * MAX + a];
+                        const c = p2[((a + 1) % MAX) + d * MAX];
+                        ctx.beginPath();
+                        ctx.strokeStyle = "hsla(" + (((a / MAX) * 360) | 0) + ",70%,60%,0.15)";
+                        ctx.lineWidth = Math.pow(6, b[2]);
+                        ctx.lineTo(b[0] * s + canvasCenter, b[1] * s + canvasCenter);
+                        ctx.lineTo(c[0] * s + canvasCenter, c[1] * s + canvasCenter);
+                        ctx.stroke();
+                    }
+                }
+            }
+            count++;
+            requestAnimationFrame(rus);
+        }
+</script>
+
+</body>
+</html>
